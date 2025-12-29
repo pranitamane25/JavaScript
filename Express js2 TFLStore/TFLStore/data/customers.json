@@ -1,0 +1,8 @@
+[
+    { "id": 1, "firstName": "Pranita", "lastName": "Mane", "email": "pranita.mane@example.com", "contact": "9876543210" },
+    { "id": 2, "firstName": "Rahul", "lastName": "Patil", "email": "rahul.patil@example.com", "contact": "9823456789" },
+    { "id": 3, "firstName": "Sneha", "lastName": "Kulkarni", "email": "sneha.kulkarni@example.com", "contact": "9865321478" },
+    { "id": 4, "firstName": "Amit", "lastName": "Deshmukh", "email": "amit.deshmukh@example.com", "contact": "9812345678" },
+    { "id": 5, "firstName": "Rohit", "lastName": "Shinde", "email": "rohit.shinde@example.com", "contact": "9898765432" },
+    { "id": 6, "firstName": "Pooja", "lastName": "Joshi", "email": "pooja.joshi@example.com", "contact": "9977886655" }
+]

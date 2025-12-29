@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+
+<body>
+    <h1>Login</h1>
+
+    <input id="username" type="text" placeholder="Enter username"><br><br>
+    <input id="password" type="password" placeholder="Enter password"><br><br>
+
+    <button onclick="doLogin()">Login</button>
+
+    <p id="result"></p>
+
+<script>
+function doLogin() {
+    let user = {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value
+    };
+
+    fetch("/api/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerText = data.message;
+    })
+    .catch(err => {
+        document.getElementById("result").innerText = "Error connecting to server";
+    });
+}
+</script>
+
+</body>
+</html>

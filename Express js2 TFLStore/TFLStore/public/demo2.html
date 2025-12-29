@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <script src="/scripts/jquery.min.js"></script>
+</head>
+<body>
+    <button id="registerbtn">click here</button>
+
+    <script>
+
+        $(document).ready(function(){
+            $("#registerbtn").click(function(){
+                //send data to rest API
+                //http://localhost/api/register.html
+
+                var newcustomer={
+                    "id":10,
+                    "firstname":"rutuja",
+                    "lastname":"mokale",
+                    "email":"rutu@example.com",
+                    "contactnumber":"2345678910"
+                };
+
+                let url="api/register";
+                $.post(url. newcustomer,function(){
+                    console.log("Data is posted on server");
+                })
+            })
+        })
+    </script>
+    </body>

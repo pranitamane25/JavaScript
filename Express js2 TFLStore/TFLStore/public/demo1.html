@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <script src="/scripts/jquery.min.js"></script>
+</head>
+<body>
+    <button id="btn1">show Me</button>
+     <button id="btn2">hide Me</button>
+    <p id="name">Pranita Mane</p>
+    <p id="company">Transflower Learning Pvt Ltd</p>
+
+    <script>
+
+         //this is using java script
+
+//     var btn=document.getElementById("btnHide");
+//     btn.addEventListener("click",function(){
+//         var para=document.getElementById("para");
+//         para.hide();
+// })
+
+
+//this is using JQuery for less code and less complications
+
+$(document).ready(function(){
+
+    $("#btn1").click(function(){
+        $("#company").show();
+    })
+})
+
+$("#btn2").click(function(){
+        $("#company").hide();
+    })
+
+
+    </script>
+
+</body>
+</html>

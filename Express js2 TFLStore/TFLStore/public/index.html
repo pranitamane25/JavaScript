@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower Details</title>
+</head>
+<body>
+    <h1>Transflower Learning</h1>
+    <hr>
+
+    <h2>Flower List from Server:</h2>
+    <div id="flowerData"></div>
+
+    <script>
+        fetch("/api/flowers")
+            .then(res => res.json())
+            .then(data => {
+                let text = "<ul>";
+
+                data.forEach(f => {
+                    text += `<li>
+                        <strong>${f.name}</strong> - ${f.description}<br>
+                        Price: ₹${f.price} | Quantity: ${f.quantity}
+                    </li><br>`;
+                });
+
+                text += "</ul>";
+
+                document.getElementById("flowerData").innerHTML = text;
+            });
+    </script>
+
+</body>
+</html>

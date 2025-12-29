@@ -1,0 +1,6 @@
+[
+    { "id": 1, "name": "Rose", "description": "Red fragrant rose flower", "price": 40, "quantity": 100 },
+    { "id": 2, "name": "Lily", "description": "White beautiful lily flower", "price": 30, "quantity": 80 },
+    { "id": 3, "name": "Tulip", "description": "Colorful tulip flower", "price": 50, "quantity": 60 },
+    { "id": 4, "name": "Marigold", "description": "Bright yellow marigold", "price": 20, "quantity": 150 }
+]

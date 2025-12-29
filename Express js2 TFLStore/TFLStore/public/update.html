@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <script src="scripts/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1> Update Existing Flowers...</h1>
+    <hr/>
+
+  <form id="registerForm">
+
+    <label>ID</label><br>
+
+    <input id="id" type="number"><br><br>
+
+    <label>First Name</label><br>
+    <input id="firstName" type="text"><br><br>
+
+    <label>Last Name</label><br>
+    <input id="lastName" type="text"><br><br>
+
+    <label>Email</label><br>
+    <input id="email" type="email"><br><br>
+
+    <label>Contact</label><br>
+    <input id="contactnumber" type="tel"><br><br>
+
+    <!-- <button id="btnupdate">Update</button>
+        <button id="btncreate">create</button> -->
+        <button id="btndelete">Delete</button>
+
+</form>
+
+<script>
+$(document).ready(function () {
+
+    // ------- GET (Fetch all customers) -------
+    function getCustomers() {
+        $.ajax({
+            url: "http://localhost:3000/api/customers",
+            type: "GET",
+            success: function (data) {
+                console.log("GET Response:", data);
+            }
+        });
+    }
+});
+
+//for POST click event if we click in button then insert new data on json file
+    $(document).ready(function () {
+
+    $("#btncreate").click(function (event) {
+        event.preventDefault(); 
+
+        var customer = {
+            id: $("#id").val(),
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val(),
+            email: $("#email").val(),
+            contact: $("#contactnumber").val()
+        };
+
+        createCustomer(customer);
+    });
+
+    function createCustomer(customer) {
+        $.ajax({
+            url: "http://localhost:3000/api/register",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(customer),
+            success: function (data) {
+                console.log("POST Response:", data);
+            },
+            error: function (err) {
+                console.error("Error:", err);
+            }
+        });
+    }
+}); 
+
+    // ------- PUT (Update customer by ID) -------
+    $(document).ready(function () {
+
+    // UPDATE button click event
+    $("#btnupdate").click(function (event) {
+        event.preventDefault();
+
+        var id = $("#id").val();
+
+        var customer = {
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val(),
+            email: $("#email").val(),
+            contact: $("#contactnumber").val()
+        };
+
+        // Call function
+        updateCustomer(id, customer);
+    });
+
+    // PUT function
+    function updateCustomer(id, customer) {
+        $.ajax({
+            url: "http://localhost:3000/api/customers/" + id,
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify(customer),
+            success: function (data) {
+                console.log("PUT Response:", data);
+                alert("Customer updated successfully!");
+            },
+            error: function (err) {
+                console.error("PUT Error:", err);
+                alert("Update failed!");
+            }
+        });
+    }
+});
+
+// ------- DELETE (Delete customer by ID) -------
+$(document).ready(function () {
+
+    // DELETE button click event
+    $("#btndelete").click(function (event) {
+        event.preventDefault();
+
+        var id = $("#id").val(); // get ID from textbox
+
+        if (id === "") {
+            alert("Please enter ID to delete.");
+            return;
+        }
+
+        deleteCustomer(id);
+    });
+
+    // DELETE function
+    function deleteCustomer(id) {
+        $.ajax({
+            url: "http://localhost:3000/api/customers/" + id,
+            type: "DELETE",
+            success: function (data) {
+                console.log("DELETE Response:", data);
+                alert("Customer deleted successfully!");
+            },
+            error: function (err) {
+                console.error("DELETE Error:", err);
+                alert("Delete failed!");
+            }
+        });
+    }
+});
+
+</script>

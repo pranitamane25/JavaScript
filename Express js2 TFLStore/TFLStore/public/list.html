@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Product Catalog</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    <h1> Todays Fresh flowers available for sale...</h1>
+    <hr/>
+    <button>get flowers</button>
+
+    <ol id="flowerlist"></ol>
+    <p id="para"></p>
+
+<script>
+    $(document).ready(function(){
+    console.log("Document is ready");
+    $("button").click(function(){
+        console.log("Button is clicked");
+        var p=document.getElementById("para");
+        $.get("/api/flowers",function(data,status){
+                        for(var i=0;i<data.length;i++){
+                            console.log(data[i].name)
+                            p.innerHTML=p.innerHTML+" "+data[i].name;
+                        }
+        })
+    })
+})
+
+    </script>
+</body>
+</html>
+
